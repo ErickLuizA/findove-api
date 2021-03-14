@@ -8,7 +8,7 @@ CREATE TABLE users (
 CREATE TABLE movies (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
-  year INT NOT NULL,
+  year VARCHAR(255) NOT NULL,
   poster VARCHAR(255) NOT NULL,
   userId INT NOT NULL
 );
