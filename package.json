@@ -16,7 +16,7 @@
     "pg": "^8.5.1"
   },
   "scripts": {
-    "start": "node dist/src/server.js",
+    "start": "node dist/server.js",
     "build": "tsc",
     "dev": "ts-node-dev --ignore-watch node_modules --respawn src/server.ts"
   },
