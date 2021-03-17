@@ -6,10 +6,13 @@ const local = {
     host: process.env.PGHOST,
     database: process.env.PGDATABASE,
     password: process.env.PGPASSWORD,
-    port: Number(process.env.PGPORT)
+    port: Number(process.env.PGPORT),
 };
 const remote = {
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false,
+    },
 };
 const pool = new pg_1.Pool(process.env.NODE_ENV === 'development' ? local : remote);
 exports.default = pool;

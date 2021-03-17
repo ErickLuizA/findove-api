@@ -17,6 +17,7 @@ class UserController {
             return response.status(200).send('User registered');
         }
         catch (error) {
+            console.log(error);
             return response.status(400).send();
         }
     }
