@@ -3,12 +3,16 @@ import pool from '../config/config'
 import { Movie } from '../entities/movie'
 
 export default class MovieController {
-  async addMovie (request: any, response: Response): Promise<Response<any, Record<string, any>>> {
-    const { title, year, poster }: Omit<Movie, 'id' | 'userId'> = request.body
+  async addMovie(
+    request: any,
+    response: Response
+  ): Promise<Response<any, Record<string, any>>> {
+    const { Title, Year, Poster }: Omit<Movie, 'id' | 'userId'> = request.body
     const userId = request.userId
 
-    const sql = 'INSERT INTO movies (title, year, poster, userId) VALUES ($1, $2, $3, $4)'
-    const values = [title, year, poster, userId]
+    const sql =
+      'INSERT INTO movies (title, year, poster, userId) VALUES ($1, $2, $3, $4)'
+    const values = [Title, Year, Poster, userId]
 
     try {
       await pool.query(sql, values)
@@ -19,7 +23,10 @@ export default class MovieController {
     }
   }
 
-  async getMovies (request: any, response: Response): Promise<Response<any, Record<string, any>>> {
+  async getMovies(
+    request: any,
+    response: Response
+  ): Promise<Response<any, Record<string, any>>> {
     const userId = request.userId
 
     const sql = 'SELECT * FROM movies WHERE movies.userId = $1'
@@ -34,7 +41,10 @@ export default class MovieController {
     }
   }
 
-  async deleteMovie (request: Request, response: Response): Promise<Response<any, Record<string, any>>> {
+  async deleteMovie(
+    request: Request,
+    response: Response
+  ): Promise<Response<any, Record<string, any>>> {
     const { id } = request.params
 
     const sql = 'DELETE FROM movies WHERE id = $1'
